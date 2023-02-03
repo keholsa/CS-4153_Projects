@@ -1,4 +1,4 @@
-import UIKit
+
 
 class Cash{
    
@@ -7,39 +7,54 @@ class Cash{
     
     //property to be taken in from functions at bottom
     var moneyAmount: Double
-    {
-        // declaration fo getter
-        get{
+    
+    // declaration of getter
+    func getBillCountArr() -> [Int]{
+        
+        // empty array that will return remainder values
+        
+        
+        var i = 0
+        var billCountArr = [0,0,0,0,0,0,0,0,0]
+        let emptyIntArr = [Int]()
+        
+
+        //while loop occurs for number of size in fixed array
+        while i < 9{
             
-            // declaration of increment at 0 for while loop
-            var i = 0
             
-            // empty array that will return remainder values
-            var billCountArr = [Double]()
+            // performs a division check to see how many bills can fit inside of a given amount
+            //will also round to floor for int value return in array
+            billCountArr[i] = Int(moneyAmount / comparisonArrMoneyOptions[i])
             
-            // while loop occurs for number of size in fixed array
-            while i < 8{
-                
-                // performs a remainder check to see how many bills can fit inside of a given amount
-                billCountArr[i] = self.moneyAmount.truncatingRemainder(dividingBy: comparisonArrMoneyOptions[i])
-                
-                // subtracts overall amount from money amount to optimise change
-                moneyAmount = moneyAmount - (billCountArr[i] * comparisonArrMoneyOptions[i])
-                i += 1
-                
+            
+            // subtracts overall amount from money amount to optimise change
+            moneyAmount = moneyAmount - (Double(billCountArr[i]) * comparisonArrMoneyOptions[i])
+            
+            //while loop incrememnt
+            i += 1
+            
+            // error if money amount entered is 0
+            if moneyAmount < 0{
+                return emptyIntArr
             }
-            return billCountArr
-        }
-        set(cashCountArr){
-            var i = 0
             
-            while i < 8{
-                i += 1
-                
-            }
-                
         }
+        
+        // returns integer values
+        return billCountArr
     }
+
+        // set(cashCountArr){
+        //     var i = 0
+            
+        //     while i < 8{
+        //         i += 1
+                
+        //     }
+                
+        // }
+    
         
         //constructor for moneyAmount property
         init(moneyAmount: Double){
@@ -48,18 +63,29 @@ class Cash{
 }
 
 // section for testing values of getter in class
-//var cash1 = Cash(moneyAmount: -1)
-//print(String(format: "%.2f", cash1.moneyAmount)
-//var cash2 = Cash(moneyAmount: 0)
-//print(String(format: "%.2f", cash2.moneyAmount)
-//var cash3 = Cash(moneyAmout: 10.35)
-//print(String(format: "%.2f", cash3.moneyAmount)
-//var cash4 = Cash(moneyAmount: 32.59)
-//print(String(format: "%.2f", cash4.moneyAmount)
-//var cash5 = Cash(moneyAmount: 69.89)
-//print(String(format: "%.2f", cash5.moneyAmount)
-//var cash6 = Cash(moneyAmount: 95.11)
-//print(String(format: "%.2f", cash6.moneyAmount)
+var cash1 = Cash(moneyAmount: -1)
+var cash1Getter = cash1.getBillCountArr()
+print(cash1Getter)
+
+var cash2 = Cash(moneyAmount: 0)
+var cash2Getter = cash2.getBillCountArr()
+print(cash2Getter)
+
+var cash3 = Cash(moneyAmount: 84.26)
+var cash3Getter = cash3.getBillCountArr()
+print(cash3Getter)
+
+var cash4 = Cash(moneyAmount: 32.59)
+var cash4Getter = cash4.getBillCountArr()
+print(cash4Getter)
+
+var cash5 = Cash(moneyAmount: 69.89)
+var cash5Getter = cash5.getBillCountArr()
+print(cash5Getter)
+
+var cash6 = Cash(moneyAmount: 95.12)
+var cash6Getter = cash6.getBillCountArr()
+print(cash6Getter)
 
 // section for testing setter quantities of class
 //TOOD: need to add printouts for get assignments (probably needs more code on setter part)
