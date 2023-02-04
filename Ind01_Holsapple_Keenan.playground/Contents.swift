@@ -1,6 +1,11 @@
 // Ind01_Holsapple_Keenan.playground
 // Indivdiual 01 Assignment: Practicing Object Oriented Programming in Playground model of Swift
- 
+// References:
+// https://stackoverflow.com/questions/31915838/how-to-convert-double-to-int-in-swift
+// https://stackoverflow.com/questions/30405737/getters-and-setters-in-swift
+// https://www.hackingwithswift.com/sixty/5/3/returning-values
+
+
 class Cash{
    
     // initializing array for fixed cash values
@@ -154,3 +159,4 @@ let cash6Setter: () = cash6.setMoneyAmount(cashCountArr: testSetterArr6)
 print("Cash amount after sixth array setter: ", cash6.moneyAmount)
 cash6Getter = cash6.getBillCountArr()
 print(cash6Getter)
+
